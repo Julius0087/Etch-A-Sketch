@@ -1,0 +1,38 @@
+body {
+  font-family: Roboto, Arial;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas-container {
+  display: flex;
+  border: 1px solid blue;
+  width: 800px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.pixel {
+  /* width: 50px; commented out - size is set by javascript
+  height: 50px; */
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+#grid-selection {
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+#grid-selection:hover {
+  background-color: gray;
+  color: white;
+  border-color: gray;
+  cursor: pointer;
+}
