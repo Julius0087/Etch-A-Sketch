@@ -30,13 +30,20 @@ function gridPrompt() {
   while (size > 80 || size < 0) {
     size = prompt("Please select a number between 1 and 80");
   }
-  /* TODO:
-  remove the grid
-  render a new grid */
-  console.log(size)
+
+  const divs = document.querySelectorAll(".pixel");
+  for (let i = 0; i < divs.length; i++) {
+    containerDiv.removeChild(divs[i]);
+  }
+  renderGrid(size);
 }
 
 function hover(e) {
   e.target.style.backgroundColor = color;
 }
+
+// extra TODO:
+/* add the rainbow functionality
+try to change the listener for click and hold
+color changer */
 
