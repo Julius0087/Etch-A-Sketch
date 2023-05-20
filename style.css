@@ -20,7 +20,7 @@ body {
   box-sizing: border-box;
 }
 
-#grid-selection {
+button {
   width: 150px;
   height: 50px;
   font-size: 20px;
@@ -30,9 +30,26 @@ body {
   margin-bottom: 50px;
 }
 
-#grid-selection:hover {
+button:hover {
   background-color: gray;
   color: white;
   border-color: gray;
   cursor: pointer;
+}
+
+.rainbow-checkbox {
+  color: rgb(29, 98, 202);
+  border-color: rgb(29, 98, 202);
+}
+
+.rainbow-checkbox:hover {
+  background-color: rgb(29, 98, 202);
+  color: white;
+  border-color: rgb(29, 98, 202);
+}
+
+.active-rainbow {
+  background-color: rgb(29, 98, 202);
+  color: white;
+  border-color: rgb(29, 98, 202);
 }
