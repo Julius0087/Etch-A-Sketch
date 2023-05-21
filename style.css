@@ -16,7 +16,7 @@ body {
 .pixel {
   /* width: 50px; commented out - size is set by javascript
   height: 50px; */
-  border: 1px solid black;
+  border: 1px solid rgb(41, 41, 41);
   box-sizing: border-box;
 }
 
@@ -31,24 +31,27 @@ button {
 }
 
 button:hover {
-  background-color: gray;
+  background-color: rgba(128, 128, 128, 1);
   color: white;
   border-color: gray;
   cursor: pointer;
 }
 
-.rainbow-checkbox {
+.rainbow-checkbox,
+.shading-checkbox {
   color: rgb(29, 98, 202);
   border-color: rgb(29, 98, 202);
 }
 
-.rainbow-checkbox:hover {
+.rainbow-checkbox:hover,
+.shading-checkbox:hover {
   background-color: rgb(29, 98, 202);
   color: white;
   border-color: rgb(29, 98, 202);
 }
 
-.active-rainbow {
+.active-rainbow,
+.active-shading {
   background-color: rgb(29, 98, 202);
   color: white;
   border-color: rgb(29, 98, 202);
