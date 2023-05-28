@@ -7,7 +7,7 @@ const clearButton = document.querySelector(".clear-grid");
 const rainbowButton = document.querySelector(".rainbow-checkbox");
 const shadingButton = document.querySelector(".shading-checkbox");
 
-let color = "rgba(0, 0, 0, 1)";
+let color = "rgba(0,0,0,1.0)";
 let size = 16;
 const canvasWidth = 800;
 
@@ -30,6 +30,8 @@ function renderGrid(size) {
     pixelDiv.classList.add("pixel");
     pixelDiv.style.width = `${pixelSize}px`;
     pixelDiv.style.height = `${pixelSize}px`;
+    pixelDiv.style.backgroundColor = "white";
+    pixelDiv.style.opacity = "1";
     pixelDiv.addEventListener("mouseover", hover);
     containerDiv.appendChild(pixelDiv);
   }
@@ -78,7 +80,10 @@ function shadingSwitch() {
 }
 
 function hover(e) {
-  /* console.log(rainbowMode) */
+  const currentOpacity = e.target.style.opacity;
+  console.log(currentOpacity);
+
+  const currentColor = e.target.style.backgroundColor;
   if (shadingMode === true && rainbowMode === true) {
     e.target.style.backgroundColor = rainbowColor(0.1);
   }
@@ -86,31 +91,46 @@ function hover(e) {
     e.target.style.backgroundColor = rainbowColor();
   }
   else if (shadingMode === true) {
-    console.log("shading");
-    e.target.style.backgroundColor = changeColor(0.1);
+    e.target.style.backgroundColor = drawShade(e, color, currentColor);
   }
-  
   else {
     e.target.style.backgroundColor = color;
   }
 }
 
-function changeColor(opacity = 1) {
-  return `rgba(0, 0, 0, ${opacity})`;
+function drawShade(e, color, currentColor) {
+  let divColor = e.target.style.backgroundColor;
+  
+  const colorSplit = color.split(",")
+
+  const divRed = colorSplit[0].split("(")[1];
+  const divGreen = colorSplit[1];
+  const divBlue = colorSplit[2];
+
+  console.log(`currentColor: ${currentColor}`)
+  if (divColor !== currentColor || divColor === "white") {
+    return `rgba(${divRed},${divGreen},${divBlue},0.1)`;
+  }
+
+  try {
+    let currentColorSplitShade = currentColor.split(",")[3];
+    currentColorSplitShade = Number(currentColorSplitShade.split(")")[0]);
+
+    let newDivShade = currentColorSplitShade + 0.1;
+    console.log(newDivShade);
+    return `rgba(${divRed},${divGreen},${divBlue},${newDivShade})`;
+  }
+  catch(err) {
+    console.log(err);
+  }
 }
 
 function rainbowColor(opacity = 1) {
-  let randomRGB = `rgba(${Math.floor(Math.random() * (255 - 0 + 1) + 0)}, ${Math.floor(Math.random() * (255 - 0 + 1) + 0)}, ${Math.floor(Math.random() * (255 - 0 + 1) + 0)}, ${opacity})`; 
+  let randomRGB = `rgba(${Math.floor(Math.random() * (255 - 0 + 1) + 0)},${Math.floor(Math.random() * (255 - 0 + 1) + 0)},${Math.floor(Math.random() * (255 - 0 + 1) + 0)},${opacity})`; 
   return randomRGB;
 }
 
 function shadingColor() {
   return color;
 }
-
-
-// extra TODO:
-/* color changer
-clear grid
-shading */
 
